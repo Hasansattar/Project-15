@@ -1,0 +1,56 @@
+type Person {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  
+}
+
+
+ 
+
+type Query {
+  listPerson: [Person]
+}
+
+input PersonInput {
+  first_name: String!
+  last_name: String!
+}
+
+ type Restaurant{
+     name: String!
+  address: String!
+  cuisine: String!
+  location: String!
+
+ }
+
+input RestaurantInput {
+  name: String!
+  address: String!
+  cuisine: String!
+  location: String!
+}
+
+type Review {
+  rating: String
+  date: String
+}
+
+input ReviewInput {
+  rating: String
+  date: String
+}
+
+
+type Mutation {
+  addPerson(person: PersonInput!): Person
+  addRestaurant(restaurant: RestaurantInput!): Restaurant
+  addReview(review: ReviewInput): Review
+}
+
+
+type Subscription {
+  onAddPerson: Person 
+  @aws_subscribe(mutations: ["addPerson"])
+}
