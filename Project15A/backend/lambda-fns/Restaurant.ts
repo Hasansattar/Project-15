@@ -1,7 +1,7 @@
 type Restaurant = {
     name: string;
     address: String;
-    cuisine: String;
+    city: String;
     location: String;
   }
   export default Restaurant

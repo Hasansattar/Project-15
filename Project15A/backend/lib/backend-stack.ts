@@ -57,6 +57,11 @@ export class BackendStack extends cdk.Stack {
       typeName: "Mutation",
       fieldName: "addReview"
     })
+    
+    lambdaDs.createResolver({
+      typeName: "Mutation",
+      fieldName: "addCuisine"
+    })
 
 
  

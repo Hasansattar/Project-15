@@ -10,9 +10,9 @@ async function createReview(review :Review) {
     const graph = new Graph()
     const g = graph.traversal().withRemote(dc)
 
-    const data = await g.addV('Review').property('date', review.date).property('rating', review.rating).next()
-        // g.V().hasLabel('Person').addE('writes').to(g.V().hasLabel('Review')).next()
-   
+    const data = await g.addV('Review').property('date', review.date).property('rating', review.rating).next();
+ 
+             g.addE("writes").from(g.V().hasLabel("Person").next()).to(g.V().hasLabel("Review").next());
     dc.close()
     return review
 }

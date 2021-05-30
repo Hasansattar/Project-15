@@ -20,7 +20,7 @@ input PersonInput {
  type Restaurant{
      name: String!
   address: String!
-  cuisine: String!
+  city: String!
   location: String!
 
  }
@@ -28,7 +28,7 @@ input PersonInput {
 input RestaurantInput {
   name: String!
   address: String!
-  cuisine: String!
+  city: String!
   location: String!
 }
 
@@ -43,10 +43,25 @@ input ReviewInput {
 }
 
 
+type Cuisine{
+  cuisineName:String
+  cuisineId:String
+
+
+}
+
+input CuisineInput{
+  cuisineName: String
+  cuisineId:String
+}
+
+
+
 type Mutation {
   addPerson(person: PersonInput!): Person
   addRestaurant(restaurant: RestaurantInput!): Restaurant
   addReview(review: ReviewInput): Review
+  addCuisine(cuisine:CuisineInput): Cuisine
 }
 
 

@@ -4,36 +4,10 @@ import createRestaurant from './createRestaurant'
 import Person from './Person';
 import Restaurant from './Restaurant';
 import Review from './Review'
+import Cuisine from './Cuisine'
 import createReview from './createReview'
-// const gremlin = require('gremlin')
-
-
-// const DriverRemoteConnection = gremlin.driver.DriverRemoteConnection
-// const Graph = gremlin.structure.Graph
-// const uri = process.env.READER
-
-//   function data(){
-   
-
-//   let dc = new DriverRemoteConnection(`wss://${uri}/gremlin`, {})
-//   const graph = new Graph()
-//   const g = graph.traversal().withRemote(dc)
-//   console.log("Starting Gremlin data loading");
-//   try {
-//   var str=  "g.V().drop().iterate();" +
-//       "g.V().hasLabel('Person').addE('friends').to(g.V.hasLabel('Person')).next();" +
-//       "g.V().hasLabel('Person').addE('writes').to(g.V.hasLabel('Review')).next();"+
-//       "g.V().hasLabel('Review').addE('are about').to(g.V.hasLabel('Restaurant')).next();"
-    
-//       return str
-//   }
-
-//    catch (error) {
-    
-//   }
-
-
-//   }
+import createCuisine from './createCuisine'
+ 
 
 
 
@@ -45,6 +19,7 @@ type AppSyncEvent = {
     person: Person
     restaurant: Restaurant
     review: Review
+    cuisine:Cuisine
   }
 }
 
@@ -57,6 +32,9 @@ exports.handler = async (event:AppSyncEvent) => {
 
       case "addReview":
         return await createReview(event.arguments.review);
+
+        case "addCuisine":
+        return await createCuisine(event.arguments.cuisine);
 
    
       case "listPerson":
