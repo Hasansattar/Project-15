@@ -12,7 +12,7 @@ async function createReview(review :Review) {
 
     const data = await g.addV('Review').property('date', review.date).property('rating', review.rating).next();
  
-             g.addE("writes").from(g.V().hasLabel("Person").next()).to(g.V().hasLabel("Review").next());
+         await    g.addE("writes").from(g.V().hasLabel("Person").next()).to(g.V().hasLabel("Review").next());
     dc.close()
     return review
 }

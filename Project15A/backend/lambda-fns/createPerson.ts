@@ -14,7 +14,7 @@ async function createPerson(person: Person ) {
     const data = await g.addV('Person').property('first_name',person.first_name).property('last_name', person.last_name).next();
 
      //edge
-      g.addE('friends').from(g.V().hasLabel("Person").next()).to(g.V().hasLabel("Person").next());
+    await  g.addE('friends').from(g.V().hasLabel("Person").next()).to(g.V().hasLabel("Person").next());
     person.id = data.value.id
     dc.close()
     return person

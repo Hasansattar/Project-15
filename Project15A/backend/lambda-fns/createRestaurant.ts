@@ -12,7 +12,7 @@ async function createRestaurant(restaurant :Restaurant) {
 
     const data = await g.addV('Restaurant').property('name', restaurant.name).property('address', restaurant.address).property('city', restaurant.city).property('location', restaurant.location).next();
    
-     g.addE("are about").from(g.V().hasLabel("Review").next()).to(g.V().hasLabel("Restaurant").next())
+   await  g.addE("are about").from(g.V().hasLabel("Review").next()).to(g.V().hasLabel("Restaurant").next())
     dc.close()
     return restaurant
 }

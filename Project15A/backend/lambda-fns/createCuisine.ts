@@ -11,7 +11,7 @@ async function createCuisine(cuisine:Cuisine) {
     const g = graph.traversal().withRemote(dc)
 
     const data = await g.addV('Cuisine').property('cuisineName', cuisine.cuisineName).property('cuisineId', cuisine.cuisineId).next();
-        g.addE("Serves").from(g.V().hasLabel("Restaurant").next()).to(g.V().hasLabel("Cuisine").next());
+       await g.addE("Serves").from(g.V().hasLabel("Restaurant").next()).to(g.V().hasLabel("Cuisine").next());
    
     dc.close()
     return cuisine
